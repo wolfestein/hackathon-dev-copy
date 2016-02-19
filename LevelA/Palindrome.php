@@ -20,13 +20,18 @@ class Palindrome
      */
     public function generatePalindrome()
     {
-        $s = $this->str;
+
+        // 1ère version
+       /* $s = $this->str;
 
         for($i=strlen($s)-1, $j=0; $j<$i; $i--, $j++) {
             list($s[$j], $s[$i]) = array($s[$i], $s[$j]);
         }
-        
-        return $this->str.$s;
-    }
+        return $this->str.$s;*/
 
+        preg_match_all('/./us', $this->str, $ar);
+
+        return $this->str.join('', array_reverse($ar[0]));
+
+    }
 }
